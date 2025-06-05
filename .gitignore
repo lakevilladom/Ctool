@@ -30,3 +30,8 @@ _temp
 todo_list.md
 
 .vercel
+
+
+# Caddy 配置文件
+**/Caddyfile
+**/*.Caddyfile

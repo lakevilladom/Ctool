@@ -1,5 +1,5 @@
-const { resolve } = require("path");
-const { rmSync } = require("fs");
+const { resolve } = require("node:path");
+const { rmSync } = require("node:fs");
 
 
 const lists = [
@@ -16,8 +16,15 @@ const lists = [
     "packages/ctool-site",
 ];
 
-lists.forEach(item => {
+// lists.forEach(item => {
+//     const removePath = resolve(__dirname, `${item}/dist/`);
+//     console.log(removePath)
+//     rmSync(removePath, { recursive: true, force: true });
+// });
+
+
+for (const item of lists){
     const removePath = resolve(__dirname, `${item}/dist/`);
     console.log(removePath)
     rmSync(removePath, { recursive: true, force: true });
-});
+}
