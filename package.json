@@ -15,7 +15,7 @@
         "release": "node scripts/release.cjs && pnpm run build && pnpm -r run platform-release",
         "only-release": "node scripts/release.cjs && pnpm -r run platform-release",
         "vercel-build": "pnpm run build && pnpm --filter ctool-site run build",
-        "clear": "node scripts/clear.cjs"
+        "clear": "node scripts/clear.ts"
     },
     "pnpm": {
         "peerDependencyRules": {
@@ -31,6 +31,7 @@
         "typescript": "^5.2.2"
     },
     "dependencies": {
+        "@pnpm/workspace.find-packages": "^1000.0.25",
         "ctool-config": "workspace:*",
         "http-proxy": "^1.18.1"
     }
