@@ -1,5 +1,5 @@
-const { join } = require("path");
-const { mkdirSync, rmSync, readdirSync, statSync, writeFileSync } = require("fs");
+const { join } = require("node:path");
+const { mkdirSync, rmSync, readdirSync, statSync, writeFileSync } = require("node:fs");
 
 // 发布初始化 清空 `./_release` 目录
 const init = () => {

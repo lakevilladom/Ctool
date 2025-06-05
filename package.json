@@ -12,8 +12,8 @@
         "check": "pnpm run initialize && pnpm --filter ctool-core run check",
         "dev": "pnpm run initialize && pnpm --filter ctool-core run dev",
         "build": "pnpm run initialize && pnpm --filter ctool-core run build",
-        "release": "node scripts/release.cjs && pnpm run build && pnpm -r run platform-release",
-        "only-release": "node scripts/release.cjs && pnpm -r run platform-release",
+        "release": "node scripts/release.ts && pnpm run build && pnpm -r run platform-release",
+        "only-release": "node scripts/release.ts && pnpm -r run platform-release",
         "vercel-build": "pnpm run build && pnpm --filter ctool-site run build",
         "clear": "node scripts/clear.ts"
     },
