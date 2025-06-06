@@ -1,4 +1,4 @@
-import {ToolInterface, FeatureInterface, ToolType, FeatureType} from "./config"
+import type {ToolInterface, FeatureInterface, ToolType, FeatureType} from "./config"
 import {upperFirst} from "lodash";
 
 export default class Feature<T extends ToolType = ToolType> implements FeatureInterface<T> {
@@ -27,7 +27,7 @@ export default class Feature<T extends ToolType = ToolType> implements FeatureIn
         return `/tool/${this.tool.directory}${this.tool.isSimple() ? '' : `/${this.name}`}`
     }
 
-    getQuery(category: string = "", other: Record<string, any> = {}) {
+    getQuery(category = "", other: Record<string, any> = {}) {
         if (!this.tool.inCategory(category)) {
             category = this.tool.firstCategory().name
         }

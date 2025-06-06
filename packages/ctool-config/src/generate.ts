@@ -3,8 +3,8 @@ import {buildRoute} from "./generate/router"
 import {buildKeywords} from "./generate/keyword"
 import {buildIcon} from "./generate/icon"
 import {buildAddition, buildData, buildType} from "./generate/fileSystem";
-import {copyFileSync} from "fs";
-import {join} from "path";
+import {copyFileSync} from "node:fs";
+import {join} from "node:path";
 
 // 路由配置文件
 buildRoute();

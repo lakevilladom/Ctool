@@ -8,7 +8,7 @@ export default {
     defaultProxyUrl: "https://ctool.dev/api/proxy",
     is(url: string) {
         if (url !== "") {
-            for (let domain of domains) {
+            for (const domain of domains) {
                 if (url.includes(domain)) {
                     return true;
                 }
@@ -21,7 +21,7 @@ export default {
     },
     // chrome / edge / firefox 浏览器扩展  manifest.json permissions
     getManifestPermissions() {
-        return domains.map(domain => {
+        return domains.flatMap(domain => {
             domain = domain.trim();
             const lists = domain.split('.')
             if (lists.length < 2) {
@@ -32,5 +32,5 @@ export default {
             }
             return lists.join(".");
         }).flat().filter(str => str !== "").map(str => `*://${str}/*`)
-    }
+    },
 }

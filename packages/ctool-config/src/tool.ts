@@ -1,8 +1,8 @@
-import {ToolInterface, FeatureInterface, CategoryInterface, ToolType, CategoryType, FeatureType} from "./config"
+import type {ToolInterface, FeatureInterface, CategoryInterface, ToolType, CategoryType, FeatureType} from "./config"
 
 export default class Tool<T extends ToolType = any> implements ToolInterface<T> {
     private readonly _name: T;
-    private _parentDirectory: string = "";
+    private _parentDirectory = "";
     private _features: FeatureInterface<T>[] = []
     private _categories: CategoryInterface[] = []
 

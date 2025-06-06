@@ -1,13 +1,13 @@
 import {
     _tools,
-    ToolInterface as _ToolInterface,
-    CategoryInterface as _CategoryInterface,
-    FeatureInterface as _FeatureInterface,
-    ToolType as _ToolType,
-    FeatureType as _FeatureType,
+    type ToolInterface as _ToolInterface,
+    type CategoryInterface as _CategoryInterface,
+    type FeatureInterface as _FeatureInterface,
+    type ToolType as _ToolType,
+    type FeatureType as _FeatureType,
     _categoryTool,
     _common,
-    CategoryType as _CategoryType,
+    type CategoryType as _CategoryType,
 } from "./config";
 import Tool from "./tool";
 import Feature from "./feature";
@@ -25,7 +25,7 @@ export type FeatureInterface<T extends ToolType = ToolType> = _FeatureInterface<
 const toolContainer: { [key in ToolType]: ToolInterface<key> } = mapValues(_tools, (value, name) => {
     const tool = new Tool(name as ToolType);
     tool.parentDirectory = value.parent_directory;
-    for (let feature of value.feature) {
+    for (const feature of value.feature) {
         new Feature(tool, feature as FeatureType);
     }
     return tool;
@@ -34,7 +34,7 @@ const toolContainer: { [key in ToolType]: ToolInterface<key> } = mapValues(_tool
 // @ts-ignore
 const categoryContainer: { [key in CategoryType]: CategoryInterface<key> } = mapValues(_categoryTool, (items, name) => {
     const category = new Category(name as CategoryType);
-    for (let item of items) {
+    for (const item of items) {
         category.addTool(toolContainer[item]);
     }
     return category;
