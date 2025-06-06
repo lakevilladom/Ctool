@@ -1,14 +1,14 @@
-import {findWorkspacePackages} from '@pnpm/workspace.find-packages';
 import { rmSync } from 'node:fs';
-import { resolve } from 'node:path';
+import {getSubPkgsPath} from '../utils/packages.ts';
+import { join } from 'node:path';
 
-const  packages  = await findWorkspacePackages(process.cwd());
-for (const pkg of packages) {
-    const removePath = resolve(pkg.rootDir, 'dist');
+
+for (const p of getSubPkgsPath()) {
+    const distPath=join(p, 'dist');
     try {
-        rmSync(removePath, { recursive: true, force: true });
-        console.log(`Removed: ${removePath}`);
+        rmSync(distPath, { recursive: true, force: true });
+        console.log(`Removed: ${distPath}`);
     } catch (error) {
-        console.error(`Error removing ${removePath}:`, error);
+        console.error(`Error removing ${distPath}:`, error);
     }
 }

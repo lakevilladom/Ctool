@@ -1,23 +1,25 @@
-const { join } = require("node:path");
-const { mkdirSync, rmSync, readdirSync, statSync, writeFileSync } = require("node:fs");
+import { join } from "node:path"
+import { mkdirSync, rmSync, readdirSync, statSync, writeFileSync } from "node:fs";
+
+import { getSubPkgsPath } from "../utils/packages.ts";
+
+const releaseDir="_release"
+const releasePath = join(process.cwd(), releaseDir);
 
 // 发布初始化 清空 `./_release` 目录
 const init = () => {
-    const releasePath = join(__dirname, "_release");
-
     rmSync(releasePath, { recursive: true, force: true });
     mkdirSync(releasePath);
 };
 
 // 获取发布文件列表 生成发布文件日志
 const get = () => {
-    const releasePath = join(__dirname, "_release");
     const files =
         readdirSync(releasePath)
             .map(item => {
                 return {
                     path: join(releasePath, item),
-                    name: `./_release/${item}`,
+                    name: `./${item}/${item}`,
                 };
             })
             .filter(item => {
@@ -25,14 +27,14 @@ const get = () => {
             })
             .map(item => item.name) || [];
     const result = files.join("\n");
-    writeFileSync(join(__dirname, "_release_files"), result);
+    writeFileSync(join(process.cwd(), "_release_files"), result);
     console.log(result);
 };
 
 // 清理 core dist 文件 github action 中使用
 const clear = () => {
-    rmSync(join(__dirname, "packages/ctool-core/dist/.git"), { recursive: true, force: true });
-    rmSync(join(__dirname, "packages/ctool-core/dist/.nojekyll"), { force: true });
+    rmSync(join(getSubPkgsPath("ctoolCore") as string, "dist",".git"), { recursive: true, force: true });
+    rmSync(join(getSubPkgsPath("ctoolCore") as string, "dist",".nojekyll"), { force: true });
 };
 
 const run = () => {
