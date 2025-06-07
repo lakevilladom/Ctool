@@ -1,4 +1,4 @@
-import {PlatformRuntime} from "ctool-config";
+import type {PlatformRuntime} from "ctool-config";
 
 export const runtime = new (class implements PlatformRuntime {
     name = "chrome"

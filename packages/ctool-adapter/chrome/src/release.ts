@@ -1,7 +1,7 @@
 import {copyCoreDist, release, replaceFileContent, version} from "ctool-adapter-base";
 import {proxy} from "ctool-config";
-import {cpSync, mkdirSync, rmSync} from "fs";
-import {join} from "path";
+import {cpSync, mkdirSync, rmSync} from "node:fs";
+import {join} from "node:path";
 
 (async () => {
     const tempPath = join(__dirname, '../_temp')

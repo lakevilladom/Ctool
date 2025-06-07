@@ -23,7 +23,7 @@ const SubPkgs = {
  * @param pkgName 子包名称
  * @returns 子包路径
 */
-export function getSubPkgsPath(pkgName: (keyof typeof SubPkgs)) {
+export function getSubPkgsPath(pkgName?: (keyof typeof SubPkgs)) {
     if (pkgName) {
         return join(process.cwd(), "packages", SubPkgs[pkgName]);
     }

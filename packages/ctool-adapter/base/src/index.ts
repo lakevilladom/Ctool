@@ -1,5 +1,5 @@
-import {join} from "path";
-import {copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync} from "fs";
+import {join} from "node:path";
+import {copyFileSync, cpSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync} from "node:fs";
 
 export const getPath = (path = "") => {
     return join(__dirname, '../../../../', path)
@@ -61,5 +61,5 @@ export const getAdditionData = (): Record<string, any> => {
 }
 
 export const version = (): string => {
-    return getRootPackageJson()['version'] || ""
+    return getRootPackageJson().version || ""
 }
